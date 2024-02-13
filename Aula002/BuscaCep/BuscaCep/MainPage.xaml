@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BuscaCep.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:BuscaCep.ViewModels"
+    x:DataType="viewModels:BuscaCepViewModel">
+
+    <!--<ContentPage.BindingContext>
+        <viewModels:BuscaCepViewModel />
+    </ContentPage.BindingContext>-->
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+
+            <Entry
+                Keyboard="Numeric"
+                MaxLength="8"
+                Text="{Binding CEP}" />
+
+            <Button
+                x:Name="CounterBtn"
+                Clicked="OnCounterClicked"
+                Text="Buscar" />
+
+            <VerticalStackLayout Spacing="15">
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="Logradouro:" />
+                    <Label x:Name="lblLogradouro" Text="-" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="Bairro:" />
+                    <Label x:Name="lblBairro" Text="-" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="Localidade:" />
+                    <Label x:Name="lblLocalidade" Text="-" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="UF:" />
+                    <Label x:Name="lblUf" Text="-" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="DDD:" />
+                    <Label x:Name="lblDDD" Text="-" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
