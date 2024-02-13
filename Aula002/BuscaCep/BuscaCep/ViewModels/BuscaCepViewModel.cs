@@ -1,20 +1,14 @@
-﻿using System.Net.Http.Json;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Net.Http.Json;
 
 namespace BuscaCep.ViewModels
 {
-    sealed class BuscaCepViewModel : BaseViewModel
+    sealed partial class BuscaCepViewModel : BaseViewModel
     {
-        private string? _CEP;
-        public string? CEP
-        {
-            get => _CEP;
-            set
-            {
-                _CEP = value;
-                OnPropertyChanged();
-                BuscarCommand.ChangeCanExecute();
-            }
-        }
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(BuscarCommand))]
+        string? _CEP;
 
         ViaCepDto? _dto = null;
 
@@ -24,16 +18,13 @@ namespace BuscaCep.ViewModels
         public string? UF { get => _dto?.uf; }
         public string? DDD { get => _dto?.ddd; }
 
-        private Command _BuscarCommand;
-        public Command BuscarCommand
-            => _BuscarCommand ??= new Command(async () => await BuscarCommandExecute(), () => BuscarCommandCanExecute());
-
-        private bool BuscarCommandCanExecute()
+        private bool BuscarCanExecute()
             => !string.IsNullOrWhiteSpace(CEP) &&
             CEP.Length == 8 &&
             IsNotBusy;
 
-        private async Task BuscarCommandExecute()
+        [RelayCommand(CanExecute = nameof(BuscarCanExecute))]
+        private async Task Buscar()
         {
             try
             {
@@ -41,7 +32,7 @@ namespace BuscaCep.ViewModels
                     return;
 
                 IsBusy = true;
-                BuscarCommand.ChangeCanExecute();
+                BuscarCommand.NotifyCanExecuteChanged();
 
                 _dto = await new HttpClient()
                         .GetFromJsonAsync<ViaCepDto>(requestUri: $"https://viacep.com.br/ws/{CEP}/json/") ??
@@ -63,7 +54,7 @@ namespace BuscaCep.ViewModels
                 OnPropertyChanged(nameof(DDD));
 
                 IsBusy = false;
-                BuscarCommand.ChangeCanExecute();
+                BuscarCommand.NotifyCanExecuteChanged();
             }
         }
     }

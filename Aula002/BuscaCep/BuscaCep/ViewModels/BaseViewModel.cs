@@ -1,26 +1,12 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BuscaCep.ViewModels;
 
-abstract class BaseViewModel : INotifyPropertyChanged
+abstract partial class BaseViewModel : ObservableObject
 {
-    public event PropertyChangedEventHandler? PropertyChanged;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsNotBusy))]
+    bool _IsBusy = false;
 
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-    private bool _IsBusy = false;
-    public bool IsBusy
-    {
-        get => _IsBusy;
-        set
-        {
-            _IsBusy = value;
-            OnPropertyChanged();
-            OnPropertyChanged(nameof(IsNotBusy));
-        }
-    }
-
-    public bool IsNotBusy => !_IsBusy;
+    public bool IsNotBusy => !IsBusy;
 }
