@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BuscaCep.Views.BuscaCepPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:BuscaCep.ViewModels"
+    Title="BuscaCepPage"
+    x:DataType="viewModels:BuscaCepViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+
+            <Entry
+                Keyboard="Numeric"
+                MaxLength="8"
+                Text="{Binding CEP}" />
+
+            <Button Command="{Binding BuscarCommand}" Text="Buscar" />
+
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}" />
+
+            <VerticalStackLayout IsVisible="{Binding IsNotBusy}" Spacing="15">
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="Logradouro:" />
+                    <Label Text="{Binding Logradouro}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="Bairro:" />
+                    <Label Text="{Binding Bairro}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="Localidade:" />
+                    <Label Text="{Binding Localidade}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="UF:" />
+                    <Label Text="{Binding UF}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Label FontAttributes="Bold" Text="DDD:" />
+                    <Label Text="{Binding DDD}" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

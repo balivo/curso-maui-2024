@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BuscaCep.Views.CepsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BuscaCep"
+    xmlns:viewModels="clr-namespace:BuscaCep.ViewModels"
+    Title="CepsPage"
+    x:DataType="viewModels:CepsViewModel">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Button
+            Grid.Row="0"
+            Command="{Binding NovaBuscaCommand}"
+            Text="Novo CEP" />
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Ceps}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:ViaCepDto">
+                    <TextCell Detail="{Binding logradouro}" Text="{Binding cep}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>
