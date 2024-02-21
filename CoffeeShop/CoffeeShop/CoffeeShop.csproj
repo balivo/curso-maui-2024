@@ -57,6 +57,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Sora-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Sora-ExtraBold.ttf" />
+	  <None Remove="Resources\Fonts\Sora-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Sora-Light.ttf" />
+	  <None Remove="Resources\Fonts\Sora-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Sora-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Sora-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Sora-Thin.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />

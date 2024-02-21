@@ -4,7 +4,77 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="HomePage">
-    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Eu sou a home Page" />
-    </VerticalStackLayout>
+    <Grid>
+        <Grid RowDefinitions="*,1.75*">
+            <Grid
+                Grid.Row="0"
+                Padding="40,0"
+                BackgroundColor="#131313"
+                ColumnDefinitions="*,Auto"
+                RowDefinitions="*,Auto,Auto,Auto,4*">
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontFamily="SoraRegular"
+                    Text="Location"
+                    TextColor="#B7B7B7" />
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontFamily="SoraSemiBold"
+                    Text="Bilzen, Tanjungbalai"
+                    TextColor="#DDDDDD" />
+
+                <Border
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    BackgroundColor="#ffffff"
+                    HeightRequest="44"
+                    StrokeShape="RoundRectangle 11"
+                    StrokeThickness="0"
+                    WidthRequest="44" />
+            </Grid>
+        </Grid>
+        <Grid RowDefinitions="*,80">
+            <Border
+                Grid.Row="1"
+                Margin="-0.40,0"
+                BackgroundColor="#FFFFFF"
+                StrokeShape="RoundRectangle 20,20,0,0"
+                StrokeThickness="0">
+
+                <Grid ColumnDefinitions="*,Auto,*,Auto,*,Auto,*,Auto,*">
+
+                    <StackLayout
+                        Grid.Column="1"
+                        BackgroundColor="#000000"
+                        HeightRequest="30"
+                        WidthRequest="30" />
+
+                    <StackLayout
+                        Grid.Column="3"
+                        BackgroundColor="#000000"
+                        HeightRequest="30"
+                        WidthRequest="30" />
+
+                    <StackLayout
+                        Grid.Column="5"
+                        BackgroundColor="#000000"
+                        HeightRequest="30"
+                        WidthRequest="30" />
+
+                    <StackLayout
+                        Grid.Column="7"
+                        BackgroundColor="#000000"
+                        HeightRequest="30"
+                        WidthRequest="30" />
+
+                </Grid>
+
+            </Border>
+        </Grid>
+    </Grid>
 </ContentPage>

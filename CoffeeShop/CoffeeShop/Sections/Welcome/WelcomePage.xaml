@@ -7,7 +7,29 @@
     Title="WelcomePage"
     x:DataType="welcome:WelcomePageViewModel"
     BackgroundImageSource="bg_onboarding">
-    <VerticalStackLayout>
-        <Button Command="{Binding GetStartedCommand}" Text="Get Started" />
-    </VerticalStackLayout>
+    <Grid BackgroundColor="#40000000" RowDefinitions="*,Auto">
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Padding="30,0,30,30"
+            Spacing="20">
+
+            <Label
+                FontFamily="SoraSemiBold"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource Headline}"
+                Text="Coffee so good, your taste buds will love it."
+                TextColor="#ffffff" />
+
+            <Label
+                FontFamily="SoraRegular"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource SubHeadline}"
+                Text="The best grain, the finest roast, the powerful flavor."
+                TextColor="#A9A9A9" />
+
+            <Button Command="{Binding GetStartedCommand}" Text="Get Started" />
+
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

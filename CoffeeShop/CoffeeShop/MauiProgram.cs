@@ -15,6 +15,14 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("Sora-Bold.ttf", "OpenSansSemibold");
+                fonts.AddFont("Sora-ExtraBold.ttf", "SoraExtraBold");
+                fonts.AddFont("Sora-ExtraLight.ttf", "SoraExtraLight");
+                fonts.AddFont("Sora-Light.ttf", "SoraLight");
+                fonts.AddFont("Sora-Medium.ttf", "SoraMedium");
+                fonts.AddFont("Sora-Regular.ttf", "SoraRegular");
+                fonts.AddFont("Sora-SemiBold.ttf", "SoraSemiBold");
+                fonts.AddFont("Sora-Thin.ttf", "SoraThin");
             });
 
 #if DEBUG
