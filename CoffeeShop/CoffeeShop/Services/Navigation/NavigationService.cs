@@ -83,7 +83,11 @@ internal sealed class NavigationService
 
     public void Initialize(object? parameters = null)
     {
-        Application.Current!.MainPage = new CustomNavigationPage(new WelcomePage() { BindingContext = new WelcomePageViewModel() });
+        Application.Current!.MainPage = new CustomNavigationPage(
+            VersionTracking.Default.IsFirstLaunchEver ?
+            new WelcomePage() { BindingContext = new WelcomePageViewModel() } :
+            new HomePage() { BindingContext = new HomePageViewModel() });
+
         MainThread.InvokeOnMainThreadAsync(async () => await ((BasePageViewModel)Navigation.NavigationStack[0].BindingContext).Initialize(parameters));
     }
 }

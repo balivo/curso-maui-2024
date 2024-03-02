@@ -3,7 +3,9 @@
     x:Class="CoffeeShop.Sections.Home.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="HomePage">
+    xmlns:home="clr-namespace:CoffeeShop.Sections.Home"
+    Title="HomePage"
+    x:DataType="home:HomePageViewModel">
     <Grid>
         <Grid RowDefinitions="*,1.75*">
             <Grid
@@ -46,31 +48,111 @@
                 StrokeShape="RoundRectangle 20,20,0,0"
                 StrokeThickness="0">
 
-                <Grid ColumnDefinitions="*,Auto,*,Auto,*,Auto,*,Auto,*">
+                <Grid ColumnDefinitions="*,Auto,*,Auto,*,Auto,*,Auto,*" RowDefinitions="*,Auto,Auto,*">
 
-                    <StackLayout
+                    <Image
+                        Grid.Row="2"
+                        Margin="0,5,0,0"
+                        Source="ic_current_tab_indicator">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="Image"
+                                Value="{Static home:HomeTabs.Home}">
+                                <Setter Property="Grid.Column" Value="1" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="Image"
+                                Value="{Static home:HomeTabs.Favorites}">
+                                <Setter Property="Grid.Column" Value="3" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="Image"
+                                Value="{Static home:HomeTabs.Orders}">
+                                <Setter Property="Grid.Column" Value="5" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="Image"
+                                Value="{Static home:HomeTabs.Notifications}">
+                                <Setter Property="Grid.Column" Value="7" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+
+                    <ImageButton
+                        Grid.Row="1"
                         Grid.Column="1"
-                        BackgroundColor="#000000"
+                        Command="{Binding GoToTabCommand}"
+                        CommandParameter="{Static home:HomeTabs.Home}"
                         HeightRequest="30"
-                        WidthRequest="30" />
+                        Source="ic_home"
+                        WidthRequest="30">
+                        <ImageButton.Triggers>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="ImageButton"
+                                Value="{Static home:HomeTabs.Home}">
+                                <Setter Property="Source" Value="ic_home_selected" />
+                            </DataTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
 
-                    <StackLayout
+                    <ImageButton
+                        Grid.Row="1"
                         Grid.Column="3"
-                        BackgroundColor="#000000"
+                        Command="{Binding GoToTabCommand}"
+                        CommandParameter="{Static home:HomeTabs.Favorites}"
                         HeightRequest="30"
-                        WidthRequest="30" />
+                        Source="ic_heart"
+                        WidthRequest="30">
+                        <ImageButton.Triggers>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="ImageButton"
+                                Value="{Static home:HomeTabs.Favorites}">
+                                <Setter Property="Source" Value="ic_heart_selected" />
+                            </DataTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
 
-                    <StackLayout
+                    <ImageButton
+                        Grid.Row="1"
                         Grid.Column="5"
-                        BackgroundColor="#000000"
+                        Command="{Binding GoToTabCommand}"
+                        CommandParameter="{Static home:HomeTabs.Orders}"
                         HeightRequest="30"
-                        WidthRequest="30" />
+                        Source="ic_bag"
+                        WidthRequest="30">
+                        <ImageButton.Triggers>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="ImageButton"
+                                Value="{Static home:HomeTabs.Orders}">
+                                <Setter Property="Source" Value="ic_bag_selected" />
+                            </DataTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
 
-                    <StackLayout
+                    <ImageButton
+                        Grid.Row="1"
                         Grid.Column="7"
-                        BackgroundColor="#000000"
+                        Command="{Binding GoToTabCommand}"
+                        CommandParameter="{Static home:HomeTabs.Notifications}"
                         HeightRequest="30"
-                        WidthRequest="30" />
+                        Source="ic_notification"
+                        WidthRequest="30">
+                        <ImageButton.Triggers>
+                            <DataTrigger
+                                Binding="{Binding CurrentTab}"
+                                TargetType="ImageButton"
+                                Value="{Static home:HomeTabs.Notifications}">
+                                <Setter Property="Source" Value="ic_notification_selected" />
+                            </DataTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
 
                 </Grid>
 
