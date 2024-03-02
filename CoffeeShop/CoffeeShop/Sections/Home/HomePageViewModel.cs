@@ -1,7 +1,6 @@
 ﻿using AsyncAwaitBestPractices;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Reflection.Metadata;
 
 namespace CoffeeShop.Sections.Home;
 
@@ -36,13 +35,7 @@ internal sealed partial class HomePageViewModel : BasePageViewModel
                 break;
         }
     }
-
     
-
-    
-
-    
-
     public override async Task Initialize(object? parameter = null)
     {
         try
